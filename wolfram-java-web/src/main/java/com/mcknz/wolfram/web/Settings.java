@@ -8,10 +8,8 @@ import java.util.Properties;
 class Settings {
 
   private final Properties props;
-  private String driverPath;
   private WebDriverType driverType;
   private int pageTimeout = -1;
-  private String operatingSystem;
 
   Settings() {
     props = new Properties();
