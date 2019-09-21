@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.Enumeration;
 import java.util.Properties;
 
-public class Settings {
+class Settings {
 
   private final Properties props;
   private String driverPath;
@@ -13,41 +13,23 @@ public class Settings {
   private int pageTimeout = -1;
   private String operatingSystem;
 
-  public Settings() {
+  Settings() {
     props = new Properties();
     loadResourceSettings(Thread.currentThread().getContextClassLoader());
   }
 
-  public String getDriverPath() {
-    if(driverPath == null) {
-      driverPath = getProperty("driverPath");
-    }
-    return driverPath;
-  }
-
-  public WebDriverType getDriverType() {
+  WebDriverType getDriverType() {
     if(driverType == null) {
       driverType = WebDriverType.valueOf(getProperty("driverType"));
     }
     return driverType;
   }
 
-  public int getPageTimeout() {
+  int getPageTimeout() {
     if(pageTimeout == -1) {
       pageTimeout = Integer.parseInt(getProperty("pageTimeout"));
     }
     return pageTimeout;
-  }
-
-  public boolean isWindows() {
-    return getOperatingSystem().toLowerCase().contains("windows");
-  }
-
-  private String getOperatingSystem() {
-    if(operatingSystem == null) {
-      operatingSystem = getProperty("operatingSystem");
-    }
-    return operatingSystem;
   }
 
   private void loadResourceSettings(ClassLoader loader) {

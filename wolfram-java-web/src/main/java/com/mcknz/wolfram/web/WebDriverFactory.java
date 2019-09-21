@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.io.File;
 import java.io.IOException;
 
 class WebDriverFactory {
@@ -19,9 +18,9 @@ class WebDriverFactory {
     try {
       switch (settings.getDriverType()) {
         case CHROME:
-          return getChromeDriver(settings, false);
+          return getChromeDriver(false);
         case CHROME_HEADLESS:
-          return getChromeDriver(settings, true);
+          return getChromeDriver(true);
       }
     } catch(Exception ex) {
       throw new IllegalArgumentException("Unable to create Driver for the specified type.");
@@ -29,8 +28,7 @@ class WebDriverFactory {
     return null;
   }
 
-  private RemoteWebDriver getChromeDriver(Settings settings,
-                                          boolean isHeadless) throws IOException {
+  private RemoteWebDriver getChromeDriver(boolean isHeadless) throws IOException {
     ChromeOptions options = new ChromeOptions();
     if(isHeadless) {
       options.addArguments("--headless");
@@ -38,26 +36,11 @@ class WebDriverFactory {
     ChromeDriverService service =
       new ChromeDriverService
         .Builder()
-        .usingDriverExecutable(
-          new File(
-            settings.getDriverPath(),
-            getDriverFile(settings,"chromedriver")
-          )
-        )
         .usingAnyFreePort()
         .build();
 
     service.start();
 
     return new RemoteWebDriver(service.getUrl(), options);
-  }
-
-  @SuppressWarnings("SameParameterValue")
-  private String getDriverFile(Settings settings,
-                               String name) {
-    if(settings.isWindows()) {
-      return name + ".exe";
-    }
-    return name;
   }
 }
