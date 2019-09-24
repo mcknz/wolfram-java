@@ -16,6 +16,12 @@ steps:
     script: |
       Write-Host ("##vso[task.setvariable variable=driverType;]$env:$(driverType)")
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'env'
+
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
