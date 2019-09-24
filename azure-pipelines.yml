@@ -9,6 +9,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      Write-Host ("##vso[task.setvariable variable=driverType;]$env:$(driverType)")
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
