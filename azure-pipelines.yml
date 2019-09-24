@@ -14,7 +14,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host ("##vso[task.setvariable variable=driverType;]$env:$(driverType)")
+      Write-Host ('##vso[task.setvariable variable=driverType;]$env:"$(driverType)"')
 
 - task: Bash@3
   inputs:
