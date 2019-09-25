@@ -18,7 +18,6 @@ steps:
       (New-Object System.Net.WebClient).DownloadFile(
         "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_win32.zip",
         "chromedriver_win32.zip"
-        )
       )
       Expand-Archive chromedriver_win32.zip
 
