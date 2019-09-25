@@ -15,6 +15,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      Set-PSDebug -Trace 1
       (New-Object System.Net.WebClient).DownloadFile(
         "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_win32.zip",
         "chromedriver_win32.zip"
