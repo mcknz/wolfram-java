@@ -19,7 +19,7 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
-    mavenVersionOption: 'Path'
+    mavenVersionOption: 'Default'
     mavenSetM2Home: false
     mavenAuthenticateFeed: false
     effectivePomSkip: false
