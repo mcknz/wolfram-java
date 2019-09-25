@@ -1,6 +1,3 @@
-## ignore settings.properties for CI
-settings.properties
-
 ## ignore cucumber reports for CI
 cucumber.xml
 
