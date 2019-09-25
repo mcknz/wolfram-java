@@ -11,13 +11,12 @@ pool:
 
 steps:
 
-- task: Bash@3
+- task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
-      wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_linux64.zip"
-      unzip chromedriver_linux64.zip
-      chmod +x chromedriver
+      Invoke-WebRequest -OutFile chromedriver_win32.zip https://chromedriver.storage.googleapis.com/$(chromeVersion)
+      Expand-Archive chromedriver_win32.zip
 
 - task: Maven@3
   inputs:
