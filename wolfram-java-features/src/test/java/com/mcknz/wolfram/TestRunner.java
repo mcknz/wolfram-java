@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-  plugin = {"pretty", "json:wolfram.json"},
+  plugin = { "pretty", "junit:target/cucumber-reports/cucumber.xml" },
   features = {"src/test/resources"}
 )
 public class TestRunner {
