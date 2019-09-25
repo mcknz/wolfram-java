@@ -22,7 +22,7 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'test'
-    options: '-DdriverType=$(driverType) -DpageTimeout=$(pageTimeout) -DdriverPathAndName=$(driverPathAndName)'
+    options: '-q -DdriverType=$(driverType) -DpageTimeout=$(pageTimeout) -DdriverPathAndName=$(driverPathAndName)'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
