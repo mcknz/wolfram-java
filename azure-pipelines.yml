@@ -9,7 +9,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: Bash@3
+
+- task: Maven@3
   inputs:
-    targetType: 'inline'
-    script: 'mvn -DdriverType=$(driverType) -DpageTimeout=$(pageTimeout) test'
+    mavenPomFile: 'pom.xml'
+    goals: 'test'
+    options: '-DdriverType=$(driverType) -DpageTimeout=$(pageTimeout)'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
