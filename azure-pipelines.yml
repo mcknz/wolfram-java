@@ -15,14 +15,11 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Get-ChildItem
       (New-Object System.Net.WebClient).DownloadFile(
         "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_win32.zip",
         "chromedriver_win32.zip"
       )
-      Get-ChildItem
-      Expand-Archive -Path chromedriver_win32.zip
-      Get-ChildItem
+      Expand-Archive -Path chromedriver_win32.zip chromedriver.exe
 
 - task: Maven@3
   inputs:
