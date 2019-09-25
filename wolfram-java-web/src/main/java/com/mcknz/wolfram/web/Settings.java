@@ -48,10 +48,9 @@ class Settings {
 
   private String getProperty(String key) {
     String property = System.getProperty(key);
-    throw new RuntimeException(key + "|" + property);
-    //if(property == null) {
-    //  return props.getProperty(key);
-    //}
-    //return property;
+    if(property == null) {
+      return props.getProperty(key);
+    }
+    return property;
   }
 }
