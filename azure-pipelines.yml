@@ -15,7 +15,11 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Invoke-WebRequest -OutFile chromedriver_win32.zip https://chromedriver.storage.googleapis.com/$(chromeVersion)
+      (New-Object System.Net.WebClient).DownloadFile(
+        "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_win32.zip",
+        "chromedriver_win32.zip"
+        )
+      )
       Expand-Archive chromedriver_win32.zip
 
 - task: Maven@3
