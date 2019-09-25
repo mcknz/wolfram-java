@@ -17,8 +17,8 @@ steps:
     options: '-DdriverType=$(driverType) -DpageTimeout=$(pageTimeout)'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
+    javaHomeOption: JDKVersion
+    mavenVersionOption: Path
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
