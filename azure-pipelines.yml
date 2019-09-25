@@ -14,7 +14,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      Write-Host ('##vso[task.setvariable variable=driverType;]"$(driverType)"')
+      Write-Host ("##vso[task.setvariable variable=driverType;]$(driverType)")
+      Write-Host ("##vso[task.setvariable variable=pageTimeout;]$(pageTimeout)")
 
 - task: Bash@3
   inputs:
