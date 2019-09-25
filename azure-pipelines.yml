@@ -10,13 +10,22 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_linux64.zip"
+      unzip chromedriver_linux64.zip
+      chmod +x chromedriver
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
+    goals: 'test'
+    options: '-q -DdriverType=$(driverType) -DpageTimeout=$(pageTimeout) -DdriverPathAndName=$(driverPathAndName)'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    mavenVersionOption: 'Default'
