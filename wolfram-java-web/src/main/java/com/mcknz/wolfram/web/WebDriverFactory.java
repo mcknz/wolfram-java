@@ -23,7 +23,7 @@ class WebDriverFactory {
           return getChromeDriver(true);
       }
     } catch(Exception ex) {
-      throw new IllegalArgumentException("Unable to create Driver for the specified type.");
+      throw new IllegalArgumentException("Unable to create Driver for the specified type.", ex);
     }
     return null;
   }
