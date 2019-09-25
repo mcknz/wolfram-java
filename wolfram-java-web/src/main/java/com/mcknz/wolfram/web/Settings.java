@@ -10,6 +10,7 @@ class Settings {
   private final Properties props;
   private WebDriverType driverType;
   private int pageTimeout = -1;
+  private String driverPathAndName;
 
   Settings() {
     props = new Properties();
@@ -28,6 +29,13 @@ class Settings {
       pageTimeout = Integer.parseInt(getProperty("pageTimeout"));
     }
     return pageTimeout;
+  }
+
+  String getDriverPathAndName() {
+    if(driverPathAndName == null) {
+      driverPathAndName = getProperty("driverPathAndName");
+    }
+    return driverPathAndName;
   }
 
   private void loadResourceSettings(ClassLoader loader) {

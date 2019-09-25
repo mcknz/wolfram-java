@@ -1,11 +1,8 @@
 package com.mcknz.wolfram.web;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.io.IOException;
 
 class WebDriverFactory {
 
@@ -14,13 +11,13 @@ class WebDriverFactory {
     return getWebDriver(settings);
   }
 
-  private RemoteWebDriver getWebDriver(Settings settings) {
+  private WebDriver getWebDriver(Settings settings) {
     try {
       switch (settings.getDriverType()) {
         case CHROME:
-          return getChromeDriver(false);
+          return getChromeDriver(settings,false);
         case CHROME_HEADLESS:
-          return getChromeDriver(true);
+          return getChromeDriver(settings, true);
       }
     } catch(Exception ex) {
       throw new IllegalArgumentException("Unable to create Driver for the specified type.", ex);
@@ -28,19 +25,13 @@ class WebDriverFactory {
     return null;
   }
 
-  private RemoteWebDriver getChromeDriver(boolean isHeadless) throws IOException {
+  private WebDriver getChromeDriver(Settings settings,
+                                    boolean isHeadless) {
     ChromeOptions options = new ChromeOptions();
     if(isHeadless) {
-      options.addArguments("--headless");
+      options.addArguments("--headless", "--window-size=1920,1080");
     }
-    ChromeDriverService service =
-      new ChromeDriverService
-        .Builder()
-        .usingAnyFreePort()
-        .build();
-
-    service.start();
-
-    return new RemoteWebDriver(service.getUrl(), options);
+    System.setProperty("webdriver.chrome.driver", settings.getDriverPathAndName());
+    return new ChromeDriver(options);
   }
 }
