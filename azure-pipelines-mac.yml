@@ -6,7 +6,7 @@
 trigger: none
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'macOS'
 
 steps:
 
@@ -14,8 +14,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_linux64.zip"
-      unzip chromedriver_linux64.zip
+      wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_mac64.zip"
+      unzip chromedriver_mac64.zip
       chmod +x chromedriver
 
 - task: Maven@3
