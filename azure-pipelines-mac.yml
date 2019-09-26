@@ -14,6 +14,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      brew update
+      brew cask install google-chrome
       wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_mac64.zip"
       unzip chromedriver_mac64.zip
       chmod +x chromedriver
