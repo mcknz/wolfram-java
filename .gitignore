@@ -1,5 +1,6 @@
 ## ignore cucumber reports for CI
 cucumber.xml
+cucumber.json
 
 ###########################################################################################
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
