@@ -22,9 +22,9 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.version>3.8.1</maven.compiler.version>
-        <cucumber.version>4.7.1</cucumber.version>
+        <cucumber.version>5.4.0</cucumber.version>
         <selenium.version>3.141.59</selenium.version>
-        <hamcrest.version>2.1</hamcrest.version>
+        <hamcrest.version>2.2</hamcrest.version>
     </properties>
 
     <build>

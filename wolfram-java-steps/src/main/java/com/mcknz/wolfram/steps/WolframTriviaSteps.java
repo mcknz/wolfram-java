@@ -1,7 +1,7 @@
 package com.mcknz.wolfram.steps;
 
 import com.mcknz.wolfram.pages.WolframPage;
-import cucumber.api.java8.En;
+import io.cucumber.java8.En;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;

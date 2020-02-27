@@ -25,11 +25,14 @@ public class WolframPage extends WebPage {
   }
 
   public String getAnswer() {
-    String answerDivXPath = "//*[@id=\"root\"]/div/div/main/div[3]/div/section[1]/section[2]/div[2]";
-    String answerButtonXPath = "//span[text() = 'Plaintext']";
-    String answerTextXPath = "//div[@aria-describedby='tooltip5']/button/span";
+    String rootXPath = "//*[@id=\"root\"]/div/div/main/div[3]/div/div[1]/section/";
+    String answerDivXPath = String.format("%s%s", rootXPath, "section");
+    String answerDivXPath2 = String.format("%s%s", rootXPath, "section[2]");
+    String answerButtonXPath = String.format("%s%s", rootXPath, "section[2]/ul/li[3]/button");
+    String answerTextXPath = String.format("%s%s", rootXPath, "section[3]/div[1]/div/button/span");
 
     mouseoverByXPath(answerDivXPath);
+    mouseoverByXPath(answerDivXPath2);
     pause();
     clickByXPath(answerButtonXPath);
     pause();
