@@ -9,7 +9,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  driverPath: $(System.DefaultWorkingDirectory)
+  driverPathAndName: $(System.DefaultWorkingDirectory)/chromedriver
   webdriver.chrome.driver: $(System.DefaultWorkingDirectory)
   driverType: 'CHROME_HEADLESS'
   pageTimeout: 60
