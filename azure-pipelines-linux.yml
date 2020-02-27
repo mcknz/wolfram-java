@@ -8,13 +8,19 @@ trigger: none
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
+variables:
+  driverPath: $(System.DefaultWorkingDirectory)
+  webdriver.chrome.driver: $(System.DefaultWorkingDirectory)
+  driverType: 'CHROME_HEADLESS'
+  pageTimeout: 60
 
+steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
-      wget "https://chromedriver.storage.googleapis.com/$(chromeVersion)/chromedriver_linux64.zip"
+      chromeVersion=$(google-chrome --product-version | grep -iE "[0-9.]{10,20}")
+      wget "https://chromedriver.storage.googleapis.com/${chromeVersion}/chromedriver_linux64.zip"
       unzip chromedriver_linux64.zip
       chmod +x chromedriver
 
