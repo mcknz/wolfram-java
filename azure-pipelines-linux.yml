@@ -10,8 +10,7 @@ pool:
 
 variables:
   driverPathAndName: $(System.DefaultWorkingDirectory)/chromedriver
-  #webdriver.chrome.driver: $(System.DefaultWorkingDirectory)
-  driverType: 'CHROME_HEADLES'
+  driverType: 'CHROME_HEADLESS'
   pageTimeout: 60
 
 steps:
